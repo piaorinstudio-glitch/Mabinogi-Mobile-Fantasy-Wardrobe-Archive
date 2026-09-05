@@ -243,6 +243,34 @@ main.wrap{padding-top:28px;padding-bottom:52px}
   }
 }
 
+
+/* right hero photo inward adjust */
+.hero-photo-sub{
+  transform:rotate(4deg) translateX(-46px) !important;
+}
+@media(max-width:900px){
+  .hero-photo-sub{
+    transform:rotate(4deg) translateX(-28px) !important;
+  }
+}
+@media(max-width:620px){
+  .hero-photo-sub{
+    transform:rotate(4deg) translateX(-16px) !important;
+  }
+}
+
+
+/* clickable hero photo viewer */
+.hero-photo{
+  cursor:zoom-in !important;
+}
+.hero-photo:hover{
+  filter:brightness(1.02) saturate(1.04);
+}
+.hero-photo img{
+  pointer-events:none;
+}
+
 </style>
 </head>
 <body>
@@ -377,5 +405,38 @@ function initFromHash(){const t=(location.hash.match(/type=([^&]+)/)||[])[1]; if
 window.addEventListener('hashchange',initFromHash);
 initFromHash();
 </script>
+
+<script id="hero-photo-viewer-fix">
+(()=>{
+  function bindHeroPhotoViewer(){
+    document.querySelectorAll('.hero-photo img').forEach(img=>{
+      const holder = img.closest('.hero-photo');
+      if(!holder || holder.dataset.viewerBound === '1') return;
+      holder.dataset.viewerBound = '1';
+      holder.setAttribute('role','button');
+      holder.setAttribute('tabindex','0');
+      holder.setAttribute('aria-label','點擊放大圖片');
+      const open = ()=>{
+        const viewer = document.getElementById('viewer');
+        const viewerImg = document.getElementById('viewerImg');
+        if(viewer && viewerImg){
+          viewerImg.src = img.getAttribute('src');
+          viewer.classList.add('show');
+        }
+      };
+      holder.addEventListener('click', open);
+      holder.addEventListener('keydown', e=>{
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          open();
+        }
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', bindHeroPhotoViewer);
+  setTimeout(bindHeroPhotoViewer, 80);
+})();
+</script>
+
 </body>
 </html>
