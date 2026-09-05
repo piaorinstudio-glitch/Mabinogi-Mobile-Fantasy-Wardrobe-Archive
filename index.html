@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>瑪奇Mobile韓服外觀圖鑑</title>
+<style>
+
+:root{
+  --bg:#edf2ea;
+  --bg-2:#f7f3ea;
+  --surface:#fffdf8;
+  --surface-2:#fbf7ef;
+  --ink:#2d352e;
+  --muted:#667164;
+  --line:#d9d1c2;
+  --line-2:#c7b896;
+  --green:#2f5f4f;
+  --green-2:#476e5a;
+  --green-3:#dfe9df;
+  --gold:#b89045;
+  --gold-2:#8f6d2f;
+  --berry:#744056;
+  --shadow:0 16px 34px rgba(43,58,47,.10);
+  --shadow-deep:0 22px 70px rgba(33,44,35,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:Inter,"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(110,150,123,.16), transparent 26%),
+    radial-gradient(circle at top right, rgba(195,167,102,.16), transparent 24%),
+    linear-gradient(180deg, #eef4eb 0%, #f7f1e6 48%, #edf2ea 100%);
+}
+button,select{font:inherit}
+.wrap{width:min(1020px,calc(100% - 28px));margin:auto}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+  padding:44px 0 34px;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255,255,255,.14), transparent 18%),
+    radial-gradient(circle at 84% 18%, rgba(255,255,255,.10), transparent 22%),
+    linear-gradient(135deg, #24463b 0%, #35634f 48%, #607052 100%);
+  box-shadow:0 6px 24px rgba(0,0,0,.12);
+}
+.hero::before,
+.hero::after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:28px;
+  transform:rotate(45deg);
+  pointer-events:none;
+}
+.hero::before{left:-82px;top:-114px}
+.hero::after{right:-96px;bottom:-136px}
+.hero-top{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;z-index:1}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.08);
+  border-radius:999px;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:900;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.eyebrow::before{content:"✦";font-size:10px;opacity:.9}
+h1{
+  margin:14px 0 8px;
+  font-size:clamp(32px,5vw,50px);
+  line-height:1.08;
+  letter-spacing:-.04em;
+  font-family:"Noto Serif TC",Georgia,serif;
+  text-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+.subtitle{display:none;margin:0;max-width:700px;opacity:.92;line-height:1.8;font-size:14px;}
+.source-btn{
+  flex:none;
+  height:42px;
+  border:1px solid rgba(255,255,255,.26);
+  background:linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,.09));
+  color:#fff;
+  border-radius:999px;
+  padding:0 14px;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+  backdrop-filter:blur(8px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16);
+}
+.source-btn:hover{background:linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.12))}
+
+.toolbar-shell{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(248,244,236,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(201,188,160,.72);
+  box-shadow:0 7px 20px rgba(65,74,62,.05);
+}
+.toolbar{padding:12px 0;display:flex;align-items:center;gap:8px}
+.category-nav{display:flex;gap:7px;flex:1;flex-wrap:wrap}
+.category,.sort{
+  height:41px;
+  border:1px solid var(--line-2);
+  background:linear-gradient(180deg,#fffdf9,#f5efe3);
+  color:var(--ink);
+  border-radius:12px;
+  padding:0 13px;
+  cursor:pointer;
+  font-weight:800;
+  font-size:13px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8), 0 1px 2px rgba(46,57,47,.04);
+}
+.category:hover,.sort:hover{border-color:#ae9a6f;background:linear-gradient(180deg,#fffefb,#f8f1e4)}
+.category.active{
+  color:#fff;
+  border-color:#4c6848;
+  background:linear-gradient(180deg, #4c7055, #325c4d);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 3px 10px rgba(50,92,77,.15);
+}
+.sort{font-weight:800;flex:none}
+
+main{padding:24px 0 56px}
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:15px;
+  margin:2px 0 14px;
+}
+.section-title{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:25px;
+  font-weight:950;
+  letter-spacing:-.025em;
+  font-family:"Noto Serif TC",Georgia,serif;
+}
+.section-title::before{content:"✦";color:var(--gold);font-size:14px}
+.section-note{display:none;font-size:12px;color:var(--muted);margin-top:5px}
+.feed{display:flex;flex-direction:column;gap:16px}
+.entry{
+  position:relative;
+  display:grid;
+  grid-template-columns:360px minmax(0,1fr);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.75)),
+    linear-gradient(180deg, #fffdf8, #f7f2e9);
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.18s ease;
+  min-height:300px;
+}
+.entry::before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border:1px solid rgba(191,175,137,.35);
+  border-radius:16px;
+  pointer-events:none;
+}
+.entry::after{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:5px;
+  background:linear-gradient(180deg, #c6a05a, #5e7a58 62%, #c6a05a);
+}
+.entry:hover{transform:translateY(-2px);box-shadow:var(--shadow-deep);border-color:#c8bea9}
+.image-wrap{
+  position:relative;
+  aspect-ratio:408/340;
+  background:linear-gradient(180deg,#f2ece1,#e9e3d8);
+  overflow:hidden;
+  cursor:zoom-in;
+  align-self:stretch;
+}
+.image-wrap::after{
+  content:"點圖放大";
+  position:absolute;
+  right:12px;
+  bottom:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(34,52,45,.62);
+  color:#fff;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.02em;
+  opacity:0;
+  transform:translateY(4px);
+  transition:.18s ease;
+}
+.entry:hover .image-wrap::after{opacity:1;transform:translateY(0)}
+.image-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .24s ease}
+.image-wrap:hover img{transform:scale(1.015)}
+.entry-info{padding:32px 34px;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.entry-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.issue{
+  position:relative;
+  font-size:12px;
+  font-weight:950;
+  color:#fff;
+  background:linear-gradient(180deg, #557963, #2f5f4f);
+  border-radius:999px;
+  padding:7px 12px;
+  box-shadow:0 3px 10px rgba(47,95,79,.16);
+}
+.issue.limited{background:linear-gradient(180deg, #c99a4a, #9a6a24);box-shadow:0 3px 10px rgba(154,106,36,.18)}
+.issue.collab{background:linear-gradient(180deg, #8b6cb2, #654987);box-shadow:0 3px 10px rgba(101,73,135,.18)}
+.issue.regular{background:linear-gradient(180deg, #557963, #2f5f4f)}
+.date{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;font-weight:700}
+.name{
+  font-size:clamp(27px,3vw,34px);
+  font-weight:950;
+  line-height:1.23;
+  letter-spacing:-.04em;
+  word-break:break-word;
+  font-family:"Noto Serif TC",Georgia,serif;
+}
+.ko{margin-top:9px;font-size:16px;font-weight:800;color:var(--green-2);line-height:1.45;word-break:break-word}
+
+.tw-pass-row{
+  margin-top:18px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:11px 13px;
+  border:1px solid #d8cdae;
+  border-radius:13px;
+  background:linear-gradient(180deg,#fff9eb,#f8f0df);
+  color:#5e5546;
+  font-size:12px;
+  font-weight:750;
+  line-height:1.45;
+}
+.tw-pass-row.predicted{
+  border-style:dashed;
+  background:linear-gradient(180deg,#f6f8f2,#eef3eb);
+  border-color:#c7d1c4;
+}
+.tw-pass-label{
+  display:inline-flex;
+  align-items:center;
+  height:24px;
+  padding:0 8px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#b89146,#8d6b31);
+  color:#fff;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.02em;
+}
+.tw-pass-row.predicted .tw-pass-label{background:linear-gradient(180deg,#6f8b70,#4e6d56)}
+.tw-pass-period{font-variant-numeric:tabular-nums;color:#413a31}
+.tw-pass-state{
+  margin-left:auto;
+  padding:3px 7px;
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(170,151,112,.35);
+  color:#735c2d;
+  font-size:10px;
+  font-weight:900;
+}
+.tw-pass-row.predicted .tw-pass-state{color:#4b6752;border-color:#c5d1c5}
+.empty{
+  text-align:center;
+  padding:74px 20px;
+  color:var(--muted);
+  background:linear-gradient(180deg,#fffdf8,#f7f2e7);
+  border:1px dashed var(--line-2);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+}
+.empty b{display:block;color:var(--ink);font-size:18px;margin-bottom:6px;font-family:"Noto Serif TC",Georgia,serif}
+footer{padding:4px 0 40px;color:var(--muted);font-size:11px;text-align:center}
+
+/* image viewer */
+.viewer{position:fixed;inset:0;z-index:50;background:rgba(14,20,17,.86);display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(6px)}
+.viewer.open{display:flex}
+.viewer img{display:block;max-width:min(1180px,96vw);max-height:92vh;object-fit:contain;border-radius:12px;box-shadow:0 18px 60px rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.12)}
+.viewer-close{position:fixed;right:16px;top:16px;width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,248,238,.94);color:#33413a;font-size:25px;cursor:pointer}
+
+/* sources */
+.source-modal{position:fixed;inset:0;z-index:60;background:rgba(20,27,23,.68);display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(4px)}
+.source-modal.open{display:flex}
+.source-panel{width:min(700px,100%);max-height:88vh;overflow:auto;background:linear-gradient(180deg,#fffdf8,#f8f3ea);border-radius:22px;box-shadow:0 24px 80px rgba(0,0,0,.28);border:1px solid #d7ccb5}
+.source-head{position:sticky;top:0;background:rgba(255,252,246,.96);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:17px 18px;border-bottom:1px solid var(--line);z-index:2}
+.source-head h2{margin:0;font-size:19px;font-family:"Noto Serif TC",Georgia,serif}
+.source-close{border:0;background:#efe8da;width:34px;height:34px;border-radius:50%;font-size:20px;cursor:pointer;color:#435147}
+.source-list{padding:8px 18px 20px}.source-group{padding-top:10px}
+.source-group h3{font-size:15px;margin:12px 0 6px;color:var(--green);font-family:"Noto Serif TC",Georgia,serif}
+.source-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:11px 0;border-bottom:1px dashed #dfd7c9}
+.source-label{min-width:0;font-size:12px;line-height:1.45}.source-label b{font-size:13px}
+.source-links{display:flex;gap:6px}
+.source-links a{text-decoration:none;color:var(--green);font-size:11px;font-weight:900;border:1px solid #cfbe94;border-radius:10px;padding:6px 9px;background:linear-gradient(180deg,#fffdfa,#f7f0e2)}
+
+/* Taiwan lucky-box prediction */
+.predict-btn{
+  display:none;height:41px;border:1px solid #d1b77a;background:linear-gradient(180deg,#fff7de,#f5ead0);color:#6f5220;border-radius:12px;padding:0 13px;cursor:pointer;font-weight:900;font-size:13px;align-items:center;gap:7px;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.65)
+}
+.predict-btn.show{display:inline-flex}
+.predict-btn:hover{background:linear-gradient(180deg,#fff8e7,#f8edd4);border-color:#bea167}
+.predict-dot{width:7px;height:7px;border-radius:50%;background:#c58a2c;box-shadow:0 0 0 3px rgba(197,138,44,.13)}
+.prediction-modal{position:fixed;inset:0;z-index:58;background:rgba(20,27,23,.72);display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(5px)}
+.prediction-modal.open{display:flex}
+.prediction-panel{width:min(780px,100%);max-height:90vh;overflow:auto;background:linear-gradient(180deg,#fffdf8,#f8f3e9);border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,.3);border:1px solid #d8cbae}
+.prediction-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 19px;background:rgba(255,253,248,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.prediction-head h2{margin:0;font-size:20px;letter-spacing:-.02em;font-family:"Noto Serif TC",Georgia,serif}
+.prediction-close{border:0;background:#efe8da;width:35px;height:35px;border-radius:50%;font-size:21px;cursor:pointer;flex:none;color:#435147}
+.prediction-body{padding:18px 19px 22px}
+.prediction-lead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:15px;padding:15px 16px;border:1px solid #e3d5b8;background:linear-gradient(180deg,#fff7e8,#fcf3df);border-radius:16px}
+.prediction-lead strong{display:block;font-size:15px;margin-bottom:4px;color:#5d451c;font-family:"Noto Serif TC",Georgia,serif}
+.prediction-lead p{margin:0;color:#766b5a;font-size:12px;line-height:1.68}
+.prediction-badge{flex:none;font-size:11px;font-weight:900;color:#fff;background:linear-gradient(180deg,#c29346,#9a6f2e);padding:6px 9px;border-radius:999px}
+.prediction-list{display:flex;flex-direction:column;gap:12px}
+.prediction-item{position:relative;display:grid;grid-template-columns:245px minmax(0,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#fffefb,#f9f4ea);min-height:190px;box-shadow:var(--shadow)}
+.prediction-item::before{content:"";position:absolute;inset:10px;border:1px solid rgba(191,175,137,.32);border-radius:13px;pointer-events:none}
+.prediction-image{aspect-ratio:408/340;background:#e9e7e2;overflow:hidden;cursor:zoom-in}
+.prediction-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s ease}
+.prediction-image:hover img{transform:scale(1.015)}
+.prediction-info{padding:22px 24px;display:flex;flex-direction:column;justify-content:center}
+.prediction-order{font-size:11px;font-weight:900;color:#9b6b24;letter-spacing:.04em;margin-bottom:8px}
+.prediction-meta{font-size:12px;color:var(--muted);margin-bottom:7px;font-variant-numeric:tabular-nums}
+.prediction-name{font-size:25px;font-weight:950;line-height:1.25;letter-spacing:-.03em;font-family:"Noto Serif TC",Georgia,serif}
+.prediction-ko{margin-top:6px;font-size:14px;font-weight:800;color:var(--green-2)}
+.prediction-level{display:inline-flex;align-self:flex-start;margin:0 0 8px;padding:4px 8px;border-radius:999px;background:#eef5f0;color:#245c57;font-size:11px;font-weight:900}
+.prediction-item.candidate{background:linear-gradient(180deg,#fdfaf3,#f7f1e4);border-style:dashed}
+.prediction-item.candidate .prediction-level{background:#f3eee3;color:#775d2e}
+.prediction-reason{margin-top:11px;padding-top:10px;border-top:1px dashed #ddd7cc;color:#655f56;font-size:12px;line-height:1.72}
+.prediction-reason b{color:#37322c}
+.prediction-foot{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.68;border-top:1px dashed var(--line);padding-top:12px}.prediction-foot b{color:var(--ink)}
+
+@media(max-width:820px){
+  .entry{grid-template-columns:300px minmax(0,1fr);min-height:248px}
+  .entry-info{padding:25px}
+  .toolbar{align-items:flex-start}
+  .category-nav{flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}
+  .category{white-space:nowrap}
+  .name{font-size:26px}
+}
+@media(max-width:720px){.prediction-item{grid-template-columns:205px minmax(0,1fr)}.prediction-info{padding:18px}.prediction-name{font-size:22px}}
+@media(max-width:620px){
+  .wrap{width:min(100% - 20px,980px)}
+  .hero{padding:31px 0 26px}
+  .hero-top{gap:12px}
+  .source-btn{padding:0 11px;height:40px}
+  .toolbar{gap:7px}
+  .category,.sort{height:39px;font-size:12px;padding:0 10px}
+  .entry{grid-template-columns:42% minmax(0,1fr);min-height:0;border-radius:16px}
+  .entry-info{padding:18px 16px}
+  .entry-meta{gap:6px;margin-bottom:9px}
+  .issue{font-size:10px;padding:5px 8px}
+  .date{font-size:11px}
+  .name{font-size:20px}
+  .ko{font-size:12px;margin-top:5px}
+}
+@media(max-width:520px){
+  .predict-btn{height:38px;padding:0 10px;font-size:12px}
+  .prediction-body{padding:14px}
+  .prediction-lead{display:block}
+  .prediction-badge{display:inline-block;margin-top:10px}
+  .prediction-item{display:block}
+  .prediction-image{width:100%}
+  .prediction-info{padding:15px 16px 17px}
+  .prediction-name{font-size:22px}
+}
+@media(max-width:460px){
+  .entry{display:block}
+  .image-wrap{width:100%;aspect-ratio:408/340}
+  .entry-info{padding:17px 17px 18px}
+  .name{font-size:22px}
+  .ko{font-size:13px}
+  .source-row{grid-template-columns:1fr}
+  .source-links{justify-content:flex-start}
+  .image-wrap::after{opacity:1;transform:none;font-size:10px;padding:5px 9px}
+}
+
+
+/* pet archive */
+.offline-pet-btn{display:none !important;height:41px;border:1px solid #9bb29f;background:linear-gradient(180deg,#f2faf2,#e3efe4);color:#345c45;border-radius:12px;padding:0 13px;cursor:pointer;font-weight:900;font-size:12px;align-items:center;gap:7px;white-space:nowrap}
+.offline-pet-btn.show{display:none !important}.offline-pet-btn:hover{border-color:#7e9d84;background:#edf7ee}.offline-pet-btn:disabled{opacity:.55;cursor:wait}
+.pet-variants{margin-top:16px;padding-top:13px;border-top:1px dashed #d8cfbf;display:flex;flex-wrap:wrap;gap:7px 9px}.pet-variant{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border:1px solid #ddd4c4;background:#fbf7ef;border-radius:10px;font-size:11px;line-height:1.3;color:#555e56}.pet-rarity{font-size:9px;font-weight:900;color:#fff;border-radius:999px;padding:3px 6px}.pet-rarity.epic{background:#d86f9c}.pet-rarity.elite{background:#8a68b6}.pet-rarity.rare{background:#4f83c3}.pet-rarity.high{background:#5e9469}.pet-image-note{margin-top:10px;color:#8a8174;font-size:10px;line-height:1.55}
+.offline-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);z-index:90;max-width:min(520px,calc(100% - 28px));padding:11px 15px;border-radius:999px;background:rgba(35,55,45,.95);color:white;font-size:12px;font-weight:800;box-shadow:0 8px 30px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:.2s ease;text-align:center}.offline-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:620px){.offline-pet-btn{height:39px;padding:0 10px}.pet-variants{margin-top:12px}.pet-variant{font-size:10px;padding:5px 7px}}
+
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-top">
+    <div>
+      <div class="eyebrow">Mabinogi Mobile · Fantasy Wardrobe Archive</div>
+      <h1>瑪奇Mobile韓服外觀圖鑑</h1>
+      <p class="subtitle"></p>
+    </div>
+    <button class="source-btn" id="openSources">資料來源</button>
+  </div>
+</header>
+<div class="toolbar-shell">
+  <div class="wrap toolbar">
+    <nav class="category-nav" aria-label="圖鑑分類">
+      <button class="category active" data-type="pass">通行證</button>
+      <button class="category" data-type="lucky">幸運箱</button>
+      <button class="category" data-type="package">全套套組</button>
+      <button class="category" data-type="pet">寵物</button>
+      <button class="category" data-type="abyss">深淵副本時裝</button>
+      <button class="category" data-type="raid">團隊副本時裝</button>
+    </nav>
+    <button class="predict-btn" id="openPrediction" type="button"><span class="predict-dot"></span>台版下批預測</button>
+    <button class="offline-pet-btn" id="offlinePetBtn" type="button">⬇ 建立寵物離線版</button>
+    <select class="sort" id="sort" aria-label="排序">
+      <option value="old" selected>舊到新</option>
+      <option value="new">新到舊</option>
+    </select>
+  </div>
+</div>
+<main class="wrap">
+  <div class="section-head">
+    <div><div class="section-title" id="sectionTitle">通行證</div><div class="section-note" id="sectionNote">點圖片可放大查看</div></div>
+  </div>
+  <section class="feed" id="feed"></section>
+</main>
+<footer class="wrap">Mabinogi Mobile KR 外觀整理</footer>
+
+<div class="viewer" id="viewer" aria-hidden="true">
+  <button class="viewer-close" id="viewerClose" aria-label="關閉">×</button>
+  <img id="viewerImg" alt="">
+</div>
+
+
+<div class="prediction-modal" id="predictionModal" aria-hidden="true">
+  <div class="prediction-panel">
+    <div class="prediction-head"><h2>台版幸運箱｜下一批預測</h2><button class="prediction-close" id="predictionClose" aria-label="關閉">×</button></div>
+    <div class="prediction-body">
+      <div class="prediction-lead">
+        <div><strong>主預測 3 套＋1 套候補，並直接說明預測原因</strong><p>目前以 2026.09.09 下一輪為基準。先排除台服已出的幸運箱，再看韓服原始順序與同批推出關係；台服曾跳號，因此保留 1 套候補。</p></div>
+        <span class="prediction-badge">3 套＋候補</span>
+      </div>
+      <div class="prediction-list" id="predictionList"></div>
+      <div class="prediction-foot" id="predictionFoot"></div>
+    </div>
+  </div>
+</div>
+
+<div class="source-modal" id="sourceModal" aria-hidden="true">
+  <div class="source-panel">
+    <div class="source-head"><h2>資料來源</h2><button class="source-close" id="sourceClose" aria-label="關閉">×</button></div>
+    <div class="source-list" id="sourceList"></div>
+  </div>
+</div>
+
+<script>
+const DATA=[{"id":"pass-1","type":"pass","typeLabel":"冒險家通行證","number":1,"zh":"羽翼披風","ko":"페더드윙 케이프","lines":["羽翼披風","페더드윙 케이프"],"date":"2025-03-26","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2757707","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250326/df4b1679-7982-4697-9713-5def5fbd285a/image202503262212573.png","image":"image/pass-1.webp","latest":false},{"id":"pass-2","type":"pass","typeLabel":"冒險家通行證","number":2,"zh":"寶藏獵人","ko":"트레저헌터","lines":["寶藏獵人","트레저헌터"],"date":"2025-05-07","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2871423","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250507/13b5ea7b-613e-466f-a17e-504d83ac2d57/5%EC%8B%A0%EA%B7%9CBM%EC%83%81%ED%92%881%EB%AA%A8%ED%97%98%EA%B0%80%ED%8C%A8%EC%8A%A4900x750.jpg","image":"image/pass-2.webp","latest":false},{"id":"pass-3","type":"pass","typeLabel":"冒險家通行證","number":3,"zh":"瑟蕾娜・芙洛亞（音譯）","ko":"세렌느 플로아","lines":["瑟蕾娜・芙洛亞（音譯）","세렌느 플로아"],"date":"2025-06-18","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2957842","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250618/4d28f4db-8b20-49ec-9fe5-aa495702c52d/3%EC%8B%A0%EA%B7%9C%EB%AA%A8%ED%97%98%EA%B0%80%ED%8C%A8%EC%84%9C%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%ED%8B%B0%EC%BC%93%EA%B2%8C%EC%8B%9C%EA%B8%80900x750.jpg","image":"image/pass-3.webp","latest":false},{"id":"pass-4","type":"pass","typeLabel":"冒險家通行證","number":4,"zh":"呱呱雨天","ko":"개굴개굴 레이니","lines":["呱呱雨天","개굴개굴 레이니"],"date":"2025-09-11","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3064410","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250911/664b646f-93c3-4303-8833-f6273a8e336a/731%EB%AA%A9%EC%8B%A0%EA%B7%9C%EB%AA%A8%ED%97%98%EA%B0%80%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%ED%8C%A8%EC%8A%A4.png","image":"image/pass-4.webp","latest":false},{"id":"pass-5","type":"pass","typeLabel":"冒險家通行證","number":5,"zh":"暮星（Evenstar）","ko":"이븐스타","lines":["暮星（Evenstar）","이븐스타"],"date":"2025-09-24","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3147456","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250924/72c1d17d-2c7c-4ed7-89eb-c48d6ef91624/3%EC%9D%B4%EB%B2%A4%ED%8A%B8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750%EC%8B%A0%EA%B7%9C%EB%AA%A8%ED%97%98%EA%B0%80%ED%8C%A8%EC%8A%A4%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%ED%8B%B0%EC%BC%93.png","image":"image/pass-5.webp","latest":false},{"id":"pass-6","type":"pass","typeLabel":"冒險家通行證","number":6,"zh":"尋路者（Pathseeker）","ko":"패스시커","lines":["尋路者（Pathseeker）","패스시커"],"date":"2025-11-05","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3212047","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251105/45f7ac9a-ece8-43f2-a529-06ae012c7498/6BM%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/pass-6.webp","latest":false},{"id":"pass-7","type":"pass","typeLabel":"冒險家通行證","number":7,"zh":"雪絨（Snow Puff）","ko":"스노우퍼프","lines":["雪絨（Snow Puff）","스노우퍼프"],"date":"2025-12-17","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3311094","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251217/a0bb139f-ef61-4e83-842d-6ba34058f79b/5%EC%8B%A0%EA%B7%9C%EB%AA%A8%ED%97%98%EA%B0%80%ED%8C%A8%EC%8A%A4%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%ED%8B%B0%EC%BC%93900x750%EC%88%98%EC%A0%95.png","image":"image/pass-7.webp","latest":false},{"id":"pass-8","type":"pass","typeLabel":"冒險家通行證","number":8,"zh":"都會風格","ko":"어반 스타일","lines":["都會風格","어반 스타일"],"date":"2026-01-28","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3359490","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260128/4febe75e-0207-4eee-b7ba-89674c75db25/%EC%9D%B4%EB%B2%A4%ED%8A%B8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/pass-8.webp","latest":false},{"id":"pass-9","type":"pass","typeLabel":"冒險家通行證","number":9,"zh":"登峰者休閒裝","ko":"어센더 캐주얼","lines":["登峰者休閒裝","어센더 캐주얼"],"date":"2026-03-11","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3398062","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260311/728a01fb-becc-4f02-960d-e5e49cee5998/1%EB%AA%A8%ED%97%98%EA%B0%80%ED%8C%A8%EC%8A%A4%EA%B2%8C%EC%8B%9C%EA%B8%80%EB%82%B4%EB%B6%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750%EC%88%98%EC%A0%95.png","image":"image/pass-9.webp","latest":false},{"id":"pass-10","type":"pass","typeLabel":"冒險家通行證","number":10,"zh":"輕盈步伐","ko":"에어리 스텝","lines":["輕盈步伐","에어리 스텝"],"date":"2026-05-19","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3428337","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260519/961e08bb-ad36-4368-be13-adb9cd5abe18/1%EC%8B%A0%EA%B7%9C%EB%AA%A8%ED%97%98%EA%B0%80%ED%8C%A8%EC%8A%A4%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%ED%8B%B0%EC%BC%93%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/pass-10.webp","latest":false},{"id":"pass-11","type":"pass","typeLabel":"冒險家通行證","number":11,"zh":"歡樂夥伴","ko":"조이풀 크루","lines":["歡樂夥伴","조이풀 크루"],"date":"2026-06-24","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3481576","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260624/11642ee9-5385-41a8-801d-de5c4cb896a0/%EC%8B%A0%EA%B7%9C%EB%AA%A8%ED%97%98%EA%B0%80%ED%8C%A8%EC%8A%A4.png","image":"image/pass-11.webp","latest":false},{"id":"pass-12","type":"pass","typeLabel":"冒險家通行證","number":12,"zh":"鄉野旅程","ko":"러스틱 저니","lines":["鄉野旅程","러스틱 저니"],"date":"2026-08-05","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3516480","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260805/e70137e8-1a4b-498e-b94b-0381021a4daf/%EC%8B%A0%EA%B7%9C%EB%AA%A8%ED%97%98%EA%B0%80%ED%8C%A8%EC%8A%A4%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%ED%8B%B0%EC%BC%93900x750.png","image":"image/pass-12.webp","latest":true},{"id":"lucky-1","type":"lucky","typeLabel":"幸運箱","number":1,"zh":"盛放春光","ko":"피어나는 봄빛","lines":["盛放春光","피어나는 봄빛","套裝｜春之祭典","봄의 축제","────────","星之誓約","별의 서약","套裝｜榮耀守衛","글로리가드"],"date":"2025-03-26","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2757703","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250326/581f2e53-d127-4ea0-8cc7-e9816267cb35/02%EB%9F%B0%EC%B9%AD%ED%94%BD%EC%97%85%ED%8C%A8%EC%85%98%EC%9E%A5%EB%B9%841280x720.png","image":"image/lucky-1.webp","latest":false},{"id":"lucky-2","type":"lucky","typeLabel":"幸運箱","number":2,"zh":"熱情之舞","ko":"정열의 춤","lines":["熱情之舞","정열의 춤","套裝｜卡爾梅娜","카르메나"],"date":"2025-04-24","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2839212","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250424/9f74bdfe-ccb0-4a80-8d5e-498964286702/image202504240905463.jpeg","image":"image/lucky-2.webp","latest":false},{"id":"lucky-3","type":"lucky","typeLabel":"幸運箱","number":3,"zh":"寂靜審判","ko":"고요한 심판","lines":["寂靜審判","고요한 심판","套裝｜固態琥珀","솔리드 엠버"],"date":"2025-04-24","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2839212","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250424/7bbbf544-545d-4403-b7b7-0977761cd4b4/image202504240905464.jpeg","image":"image/lucky-3.webp","latest":false},{"id":"lucky-4","type":"lucky","typeLabel":"幸運箱","number":4,"zh":"春季運動會","ko":"봄 운동회","lines":["春季運動會","봄 운동회","套裝｜春風運動","봄바람 스포츠"],"date":"2025-05-21","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2906352","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250521/5b1b0c3c-6e2d-4d16-92fa-926210dcec16/4%EC%8B%A0%EA%B7%9CBM%EC%83%81%ED%92%88%EB%B4%84%EB%B0%94%EB%9E%8C%EC%8A%A4%ED%8F%AC%EC%B8%A0%EC%84%B8%ED%8A%B8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.jpg","image":"image/lucky-4.webp","latest":false},{"id":"lucky-5","type":"lucky","typeLabel":"幸運箱","number":5,"zh":"閃耀應援","ko":"빛나는 응원","lines":["閃耀應援","빛나는 응원","套裝｜Ram Stars 應援團","램스타즈 응원단"],"date":"2025-05-21","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2906352","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250521/f855f657-b77f-4a14-827d-b4bda7615b00/4%EC%8B%A0%EA%B7%9CBM%EC%83%81%ED%92%88%EB%A0%98%EC%8A%A4%ED%83%80%EC%A6%88%EC%9D%91%EC%9B%90%EB%8B%A8%EC%84%B8%ED%8A%B8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.jpg","image":"image/lucky-5.webp","latest":false},{"id":"lucky-6","type":"lucky","typeLabel":"幸運箱","number":6,"zh":"月影騎士團","ko":"달그림자 기사단","lines":["月影騎士團","달그림자 기사단","套裝｜月幕守衛","베일문 가디언"],"date":"2025-06-18","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2957846","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250618/6010cf4c-df0e-41de-8511-f0d2ba51e27f/5%EB%8B%AC%EA%B7%B8%EB%A6%BC%EC%9E%90%EA%B8%B0%EC%82%AC%EB%8B%A8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/lucky-6.webp","latest":false},{"id":"lucky-7","type":"lucky","typeLabel":"幸運箱","number":7,"zh":"霜花宴會","ko":"서리꽃의 연회","lines":["霜花宴會","서리꽃의 연회","套裝｜艾德爾・格蕾絲","에델 그레이스"],"date":"2025-06-18","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2957846","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250618/03080fed-b73a-4b6c-9113-f10d282b49c8/4%EC%84%9C%EB%A6%AC%EA%BD%83%EC%9D%98%EC%97%B0%ED%9A%8C%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/lucky-7.webp","latest":false},{"id":"lucky-8","type":"lucky","typeLabel":"幸運箱","number":8,"zh":"漣漪的記憶","ko":"잔물결의 기억","lines":["漣漪的記憶","잔물결의 기억","套裝｜舒適鉤織","코지 크로셰"],"date":"2025-07-16","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3037067","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250716/ad23906f-f3e2-4db4-96ec-3e13588c4fde/%EC%97%90%EC%8A%A4%EB%8B%89%EC%88%98%EC%98%81%EB%B3%B5%EC%BD%94%EC%A7%80%ED%81%AC%EB%A1%9C%EC%85%B0%EC%84%B8%ED%8A%B8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/lucky-8.webp","latest":false},{"id":"lucky-9","type":"lucky","typeLabel":"幸運箱","number":9,"zh":"海邊風景","ko":"해변의 풍경","lines":["海邊風景","해변의 풍경","套裝｜盛放海岸","블룸 코스트"],"date":"2025-07-16","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3037067","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250716/b99e9b4c-2946-4fa7-afc2-dde4279313fc/%EC%82%B0%ED%98%B8%EC%88%98%EC%98%81%EB%B3%B5%EB%B8%94%EB%A3%B8%EC%BD%94%EC%8A%A4%ED%8A%B8%EC%84%B8%ED%8A%B8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/lucky-9.webp","latest":false},{"id":"lucky-10","type":"lucky","typeLabel":"幸運箱","number":10,"zh":"心動探險隊","ko":"두근두근 탐험대","lines":["心動探險隊","두근두근 탐험대","套裝｜偵察員","스카우터"],"date":"2025-09-11","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3100668","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250911/4c8e7d93-5a4f-475f-bb70-38afc7c31a8b/821%EB%AA%A9%ED%8C%A8%EC%85%98%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4%ED%8C%A8%EC%85%98%EC%83%B5%EC%95%88%EB%82%B41.png","image":"image/lucky-10.webp","latest":false},{"id":"lucky-11","type":"lucky","typeLabel":"幸運箱","number":11,"zh":"清新微風","ko":"싱그러운 바람","lines":["清新微風","싱그러운 바람","套裝｜微風旅行","브리즈 트래블"],"date":"2025-09-11","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3100668","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250911/bd2baa6b-84fe-4156-99d6-0dbfd28e5ba1/821%EB%AA%A9%ED%8C%A8%EC%85%98%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4%ED%8C%A8%EC%85%98%EC%83%B5%EC%95%88%EB%82%B42.png","image":"image/lucky-11.webp","latest":false},{"id":"lucky-12","type":"lucky","typeLabel":"幸運箱","number":12,"zh":"神聖信念","ko":"거룩한 신념","lines":["神聖信念","거룩한 신념","套裝｜神聖裁決","디바인 저지먼트"],"date":"2025-09-24","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3147457","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250924/93367714-9ea6-4f77-a35e-94070b2b471f/4%EC%9D%B4%EB%B2%A4%ED%8A%B8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750%EB%94%94%EB%B0%94%EC%9D%B8%EC%A0%80%EC%A7%80%EB%A8%BC%ED%8A%B8%EC%84%B8%ED%8A%B8.png","image":"image/lucky-12.webp","latest":false},{"id":"lucky-13","type":"lucky","typeLabel":"幸運箱","number":13,"zh":"淨化之光","ko":"정화의 빛","lines":["淨化之光","정화의 빛","套裝｜莊嚴之光","루멘 솔렘니스"],"date":"2025-09-24","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3147457","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250924/b129534b-2bad-419f-a405-9c3fbd285b4f/5%EC%9D%B4%EB%B2%A4%ED%8A%B8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750%EB%A3%A8%EB%A9%98%EC%86%94%EB%A0%98%EB%8B%88%EC%8A%A4%EC%84%B8%ED%8A%B8.png","image":"image/lucky-13.webp","latest":false},{"id":"lucky-14","type":"lucky","typeLabel":"幸運箱","number":14,"zh":"淡淡吸引","ko":"은은한 끌림","lines":["淡淡吸引","은은한 끌림","套裝｜優雅繆思","엘레강트 뮤즈"],"date":"2025-10-29","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3201524","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251029/a1efa354-b1da-4c84-9715-f187b3ee638e/5%EC%9D%80%EC%9D%80%ED%95%9C%EB%81%8C%EB%A6%BC%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/lucky-14.webp","latest":false},{"id":"lucky-15","type":"lucky","typeLabel":"幸運箱","number":15,"zh":"宴會主人","ko":"연회의 주인","lines":["宴會主人","연회의 주인","套裝｜永恆小步舞曲","타임리스 미뉴엣"],"date":"2025-10-29","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3201524","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251029/23e40205-6f58-4778-9df0-e6cf75b04bfd/6%EC%97%B0%ED%9A%8C%EC%9D%98%EC%A3%BC%EC%9D%B8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/lucky-15.webp","latest":false},{"id":"lucky-16","type":"lucky","typeLabel":"幸運箱","number":16,"zh":"大洋氣魄","ko":"대양의 기상","lines":["大洋氣魄","대양의 기상","套裝｜暴風船長","스토미 캡틴"],"date":"2025-11-26","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3272483","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251126/3348fd14-8109-421b-ba65-e8c720bd7224/1%EB%8C%80%EC%96%91%EC%9D%98%EA%B8%B0%EC%83%81%EC%8A%A4%ED%86%A0%EB%AF%B8%EC%BA%A1%ED%8B%B4%EC%84%B8%ED%8A%B8.png","image":"image/lucky-16.webp","latest":false},{"id":"lucky-17","type":"lucky","typeLabel":"幸運箱","number":17,"zh":"自由浪潮","ko":"자유의 파도","lines":["自由浪潮","자유의 파도","套裝｜活力航程","제스티 보야지"],"date":"2025-11-26","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3272483","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251126/f4c93511-c51c-4a61-8e70-1444e76763a3/2%EC%9E%90%EC%9C%A0%EC%9D%98%ED%8C%8C%EB%8F%84%EC%A0%9C%EC%8A%A4%ED%8B%B0%EB%B3%B4%EC%95%BC%EC%A7%80%EC%84%B8%ED%8A%B8.png","image":"image/lucky-17.webp","latest":false},{"id":"lucky-18","type":"lucky","typeLabel":"幸運箱","number":18,"zh":"冬日小徑","ko":"겨울의 오솔길","lines":["冬日小徑","겨울의 오솔길","套裝｜柯尼泰迪熊","코니 테디베어"],"date":"2025-12-17","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3311096","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251217/8da766fd-c9ef-4650-9d13-fd84d13c69e9/2%EA%B2%A8%EC%9A%B8%EC%9D%98%EC%98%A4%EC%86%94%EA%B8%B8%EC%BD%94%EB%8B%88%ED%85%8C%EB%94%94%EB%B2%A0%EC%96%B4%EC%84%B8%ED%8A%B8900x750.png","image":"image/lucky-18.webp","latest":false},{"id":"lucky-19","type":"lucky","typeLabel":"幸運箱","number":19,"zh":"冰海氣息","ko":"빙해의 숨결","lines":["冰海氣息","빙해의 숨결","套裝｜冬境戰士","빈터 크리거"],"date":"2025-12-17","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3311096","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251217/7552f8de-9782-4a8e-9b64-e7e580148b0b/3%EB%B9%99%ED%95%B4%EC%9D%98%EC%88%A8%EA%B2%B0%EB%B9%88%ED%84%B0%ED%81%AC%EB%A6%AC%EA%B1%B0%EC%84%B8%ED%8A%B8900x750.png","image":"image/lucky-19.webp","latest":false},{"id":"lucky-20","type":"lucky","typeLabel":"幸運箱","number":20,"zh":"冬日旅程","ko":"겨울날의 여정","lines":["冬日旅程","겨울날의 여정","套裝｜冬林探險家","겨울 숲 탐험가"],"date":"2026-01-14","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3345414","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260114/494899cd-ef82-4f92-85d6-2c80c83193e5/3%EA%B2%A8%EC%9A%B8%EB%82%A0%EC%9D%98%EC%97%AC%EC%A0%95%EA%B2%A8%EC%9A%B8%EC%88%B2%ED%83%90%ED%97%98%EA%B0%80%EC%84%B8%ED%8A%B8%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-20.webp","latest":false},{"id":"lucky-21","type":"lucky","typeLabel":"幸運箱","number":21,"zh":"寂靜同行","ko":"고요한 동행","lines":["寂靜同行","고요한 동행","套裝｜冬林守望者","겨울 숲 파수꾼"],"date":"2026-01-14","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3345414","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260114/540ae1cd-46aa-412f-a923-08e8a7e14b92/4%EA%B3%A0%EC%9A%94%ED%95%9C%EB%8F%99%ED%96%89%EA%B2%A8%EC%9A%B8%EC%88%B2%ED%8C%8C%EC%88%98%EA%BE%BC%EC%84%B8%ED%8A%B8%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-21.webp","latest":false},{"id":"lucky-22","type":"lucky","typeLabel":"幸運箱","number":22,"zh":"預言的隱者","ko":"예언의 은둔자","lines":["預言的隱者","예언의 은둔자","套裝｜沉默誓言","사일런트 플렛지"],"date":"2026-01-14","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3345414","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260114/6dd143ac-c836-410d-a4ef-8eb7a724e7ee/2%EC%98%88%EC%96%B8%EC%9D%98%EC%9D%80%EB%91%94%EC%9E%90%EC%82%AC%EC%9D%BC%EB%9F%B0%ED%8A%B8%ED%94%8C%EB%A0%9B%EC%A7%80%EC%84%B8%ED%8A%B8%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80.png","image":"image/lucky-22.webp","latest":false},{"id":"lucky-23","type":"lucky","typeLabel":"幸運箱","number":23,"zh":"玫瑰色悸動","ko":"장밋빛 설렘","lines":["玫瑰色悸動","장밋빛 설렘","套裝｜甜蜜咖啡巧克力","스위트 카페 쇼콜라"],"date":"2026-02-11","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3373326","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260211/4c544185-5c24-4f17-8f59-b4d4dc21888e/2%EC%9E%A5%EB%B0%8B%EB%B9%9B%EC%84%A4%EB%A0%98%EC%8A%A4%EC%9C%84%ED%8A%B8%EC%B9%B4%ED%8E%98%EC%87%BC%EC%BD%9C%EB%9D%BC%EC%84%B8%ED%8A%B8%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-23.webp","latest":false},{"id":"lucky-24","type":"lucky","typeLabel":"幸運箱","number":24,"zh":"甜蜜告白","ko":"달콤한 고백","lines":["甜蜜告白","달콤한 고백","套裝｜可愛情人節","러블리 밸런타인"],"date":"2026-02-11","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3373326","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260211/c55a257d-91c4-49eb-9863-686ffaa8346c/3%EB%8B%AC%EC%BD%A4%ED%95%9C%EA%B3%A0%EB%B0%B1%EB%9F%AC%EB%B8%94%EB%A6%AC%EB%B0%B8%EB%9F%B0%ED%83%80%EC%9D%B8%EC%84%B8%ED%8A%B8%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-24.webp","latest":false},{"id":"lucky-25","type":"lucky","typeLabel":"幸運箱","number":25,"zh":"綻放陽光","ko":"피어나는 햇살","lines":["綻放陽光","피어나는 햇살","套裝｜盛放工坊","블루밍 아틀리에"],"date":"2026-03-24","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3407264","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260324/e2dfb8dd-0f66-46fd-93dc-8c4508428980/2%ED%94%BC%EC%96%B4%EB%82%98%EB%8A%94%ED%96%87%EC%82%B4%ED%8C%A8%EC%85%98%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-25.webp","latest":false},{"id":"lucky-26","type":"lucky","typeLabel":"幸運箱","number":26,"zh":"高中悸動","ko":"하이스쿨 크러쉬","lines":["高中悸動","하이스쿨 크러쉬","套裝｜High School Crush","하이스쿨 크러쉬"],"date":"2026-03-24","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3407264","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260324/92e85529-e8f2-42b0-a2bc-e8a9e8ecea33/3%ED%95%98%EC%9D%B4%EC%8A%A4%EC%BF%A8%ED%81%AC%EB%9F%AC%EC%89%AC%ED%8C%A8%EC%85%98%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-26.webp","latest":false},{"id":"lucky-27","type":"lucky","typeLabel":"幸運箱","number":27,"zh":"街頭節拍","ko":"스트릿 비트","lines":["街頭節拍","스트릿 비트","套裝｜Street Beat","스트릿 비트"],"date":"2026-04-22","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3428346","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260422/1ada8c9a-b3a6-43a3-b7ee-5e38677bd242/1%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-27.webp","latest":false},{"id":"lucky-28","type":"lucky","typeLabel":"幸運箱","number":28,"zh":"銀白徽冠","ko":"아르젠트 크레스트","lines":["銀白徽冠","아르젠트 크레스트","套裝｜Argent Crest","아르젠트 크레스트"],"date":"2026-04-22","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3428346","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260422/58a29bf3-1271-4c00-81eb-3c732c02a3ad/2%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-28.webp","latest":false},{"id":"lucky-29","type":"lucky","typeLabel":"幸運箱","number":29,"zh":"柔美恩典","ko":"디어 그레이스","lines":["柔美恩典","디어 그레이스","套裝｜Dear Grace","디어 그레이스"],"date":"2026-05-20","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3447996","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260520/f77f3ab4-9ab8-4e6c-973d-63dbba90c723/%EB%94%94%EC%96%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%8A%A4%ED%8C%A8%EC%85%98%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4.png","image":"image/lucky-29.webp","latest":false},{"id":"lucky-30","type":"lucky","typeLabel":"幸運箱","number":30,"zh":"紳士恩典","ko":"젠틀 그레이스","lines":["紳士恩典","젠틀 그레이스","套裝｜Gentle Grace","젠틀 그레이스"],"date":"2026-05-20","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3447996","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260520/3d941384-3628-4eb6-b9da-944ce6967438/%EC%A0%A0%ED%8B%80%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%8A%A4%ED%8C%A8%EC%85%98%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4.png","image":"image/lucky-30.webp","latest":false},{"id":"lucky-31","type":"lucky","typeLabel":"幸運箱","number":31,"zh":"甜蜜月夜","ko":"스위트 문나이트","lines":["甜蜜月夜","스위트 문나이트","套裝｜Sweet Moon Night","스위트 문나이트"],"date":"2026-06-23","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3481577","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260623/3b34e864-33a3-4895-b5d6-05de93462868/%EC%8A%A4%EC%9C%84%ED%8A%B8%EB%AC%B8%EB%82%98%EC%9D%B4%ED%8A%B8%ED%8C%A8%EC%85%98%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4.png","image":"image/lucky-31.webp","latest":false},{"id":"lucky-32","type":"lucky","typeLabel":"幸運箱","number":32,"zh":"貝爾克雷斯特（音譯）","ko":"벨크레스트","lines":["貝爾克雷斯特（音譯）","벨크레스트","套裝｜Bellcrest","벨크레스트"],"date":"2026-06-23","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3481577","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260623/7a35dc28-3804-4547-a0c6-1c2a7a4b7a4f/%EB%B2%A8%ED%81%AC%EB%A0%88%EC%8A%A4%ED%8A%B8%ED%8C%A8%EC%85%98%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4.png","image":"image/lucky-32.webp","latest":false},{"id":"lucky-33","type":"lucky","typeLabel":"幸運箱","number":33,"zh":"珍珠海洋海灘裝","ko":"펄 오션 비치웨어","lines":["珍珠海洋海灘裝","펄 오션 비치웨어","套裝｜Pearl Ocean Beachwear","펄 오션 비치웨어"],"date":"2026-07-15","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3500246","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260715/3fa33bea-ab5c-47cf-86ad-db42def53896/2%ED%8E%84%EC%98%A4%EC%85%98%EB%B9%84%EC%B9%98%EC%9B%A8%EC%96%B4%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-33.webp","latest":false},{"id":"lucky-34","type":"lucky","typeLabel":"幸運箱","number":34,"zh":"海洋波浪制服","ko":"마린 웨이브 유니폼","lines":["海洋波浪制服","마린 웨이브 유니폼","套裝｜Marine Wave Uniform","마린 웨이브 유니폼"],"date":"2026-07-15","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3500246","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260715/1e252655-608a-449d-ba11-9af49e138aea/%EB%A7%88%EB%A6%B0%EC%9B%A8%EC%9D%B4%EB%B8%8C%EC%9C%A0%EB%8B%88%ED%8F%BC%ED%8C%A8%EC%85%98%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4.png","image":"image/lucky-34.webp","latest":false},{"id":"lucky-35","type":"lucky","typeLabel":"幸運箱","number":35,"zh":"澎澎汽水海灘裝","ko":"폼폼 소다 비치웨어","lines":["澎澎汽水海灘裝","폼폼 소다 비치웨어","套裝｜Pom Pom Soda","폼폼 소다"],"date":"2026-08-12","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3521633","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260812/1a9b2052-b0c1-40d6-9781-ad636f1fca5e/2%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-35.webp","latest":true},{"id":"lucky-36","type":"lucky","typeLabel":"幸運箱","number":36,"zh":"熱帶日出","ko":"트로피컬 선라이즈","lines":["熱帶日出","트로피컬 선라이즈","套裝｜Tropical Sunrise","트로피컬 선라이즈"],"date":"2026-08-12","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3521633","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260812/ca9e067b-8706-4b2e-9dc4-719300196515/3%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/lucky-36.webp","latest":false},{"id":"package-1","type":"package","typeLabel":"全套套組","number":1,"zh":"神秘奧義","ko":"미스틱 아르카나","lines":["神秘奧義","미스틱 아르카나"],"date":"2025-03-27","endDate":"2025-06-19","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2757709","sourceImage":"image/package-1-source.png","image":"image/package-1.png"},{"id":"package-2","type":"package","typeLabel":"全套套組","number":2,"zh":"皇家和聲","ko":"로열하모니","lines":["皇家和聲","로열하모니"],"date":"2025-06-19","endDate":"2025-09-24","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2957955","sourceImage":"image/package-2-source.png","image":"image/package-2.png"},{"id":"package-3","type":"package","typeLabel":"全套套組","number":3,"zh":"領主騎士","ko":"로드나이트","lines":["領主騎士","로드나이트"],"date":"2025-09-25","endDate":"2025-12-18","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3147459","sourceImage":"image/package-3-source.png","image":"image/package-3.png"},{"id":"package-4","type":"package","typeLabel":"全套套組","number":4,"zh":"貴族榮耀","ko":"노블리스 아너","lines":["貴族榮耀","노블리스 아너"],"date":"2025-12-18","endDate":"2026-03-26","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3311098","sourceImage":"image/package-4-source.png","image":"image/package-4.png"},{"id":"package-5","type":"package","typeLabel":"全套套組","number":5,"zh":"邊境旅者","ko":"프론티어 원더러","lines":["邊境旅者","프론티어 원더러"],"date":"2026-03-26","endDate":"2026-06-24","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3407265","sourceImage":"image/package-5-source.png","image":"image/package-5.png"},{"id":"package-6","type":"package","typeLabel":"全套套組","number":6,"zh":"賢者羅倫","ko":"세이지 로렌","lines":["賢者羅倫","세이지 로렌"],"date":"2026-06-25","endDate":"2026-09-17","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3481578","sourceImage":"image/package-6-source.png","image":"image/package-6.png"},{"id":"pet-1","type":"pet","typeLabel":"寵物","number":1,"zh":"小狼系列","ko":"아기 늑대","lines":["小狼系列","아기 늑대"],"kind":"常規","date":"2025-04-24","endDate":"2025-06-19","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2839212","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250424/c9703f5e-2f55-478d-a766-a36d98b45362/image202504240905465.jpeg","image":"image/pet-1.jpg","variants":[{"zh":"黑色小狼","ko":"까만 아기 늑대","rarity":"史詩"},{"zh":"白色小狼","ko":"흰 아기 늑대","rarity":"菁英"},{"zh":"藍灰色小狼","ko":"청회색 아기 늑대","rarity":"稀有"},{"zh":"深灰色小狼","ko":"진회색 아기 늑대","rarity":"高級"}],"imageNote":""},{"id":"pet-2","type":"pet","typeLabel":"寵物","number":2,"zh":"野餐小熊","ko":"피크닉 아기 곰","lines":["野餐小熊","피크닉 아기 곰"],"kind":"限定","date":"2025-05-01","endDate":"2025-05-15","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2854794","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250429/531a3a53-8952-47e8-8027-19935dc3c301/5%EC%8B%A0%EA%B7%9CBM%ED%8E%AB%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.jpg","image":"image/pet-2.jpg","variants":[{"zh":"野餐小熊","ko":"피크닉 아기 곰","rarity":"菁英"}],"imageNote":""},{"id":"pet-3","type":"pet","typeLabel":"寵物","number":3,"zh":"小貓頭鷹系列","ko":"아기 올빼미","lines":["小貓頭鷹系列","아기 올빼미"],"kind":"常規","date":"2025-06-19","endDate":"2025-08-21","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/2957846","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250618/70835c29-1755-4c1e-a086-0acc62b7b2df/7%EC%8B%A0%EA%B7%9C%ED%8E%AB%EC%95%84%EA%B8%B0%EC%98%AC%EB%B9%BC%EB%AF%B8%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/pet-3.png","variants":[{"zh":"白色小貓頭鷹","ko":"흰 아기 올빼미","rarity":"史詩"},{"zh":"棕色小貓頭鷹","ko":"갈색 아기 올빼미","rarity":"菁英"},{"zh":"灰色小貓頭鷹","ko":"회색 아기 올빼미","rarity":"稀有"},{"zh":"灰棕色小貓頭鷹","ko":"회갈색 아기 올빼미","rarity":"高級"}],"imageNote":""},{"id":"pet-4","type":"pet","typeLabel":"寵物","number":4,"zh":"夏日散步博美犬","ko":"여름산책 포메라니안","lines":["夏日散步博美犬","여름산책 포메라니안"],"kind":"限定","date":"2025-07-17","endDate":"2025-07-31","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3037061","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250716/4f83d8ed-72c9-4e59-bee0-342e6ee754d7/%EC%97%AC%EB%A6%84%EB%A7%9E%EC%9D%B4%ED%8E%AB%ED%8C%A8%ED%82%A4%EC%A7%80%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/pet-4.png","variants":[{"zh":"夏日散步博美犬","ko":"여름산책 포메라니안","rarity":"菁英"}],"imageNote":""},{"id":"pet-5","type":"pet","typeLabel":"寵物","number":5,"zh":"西施犬系列","ko":"시추","lines":["西施犬系列","시추"],"kind":"常規","date":"2025-08-21","endDate":"2025-10-23","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3100667","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20250820/a26bbd3a-4bf7-42d0-8751-ae3298d98be1/%EC%8B%9C%EC%B6%94%ED%8E%AB%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4%EA%B2%8C%EC%8B%9C%EB%AC%BC900x7501.png","image":"image/pet-5.png","variants":[{"zh":"淺棕西施犬","ko":"연갈색 시추","rarity":"史詩"},{"zh":"灰色西施犬","ko":"회색 시추","rarity":"菁英"},{"zh":"白色西施犬","ko":"흰 시추","rarity":"稀有"},{"zh":"棕西施犬","ko":"갈색 시추","rarity":"高級"}],"imageNote":""},{"id":"pet-6","type":"pet","typeLabel":"寵物","number":6,"zh":"賞月兔","ko":"달맞이 토끼","lines":["賞月兔","달맞이 토끼"],"kind":"限定","date":"2025-09-30","endDate":"2025-10-23","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3161675","sourceImage":"","image":"image/pet-6.webp","variants":[{"zh":"賞月兔","ko":"달맞이 토끼","rarity":"菁英"}],"imageNote":""},{"id":"pet-7","type":"pet","typeLabel":"寵物","number":7,"zh":"倉鼠系列","ko":"햄스터","lines":["倉鼠系列","햄스터"],"kind":"常規","date":"2025-10-23","endDate":"2025-12-18","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3190409","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251022/e7706c97-7b46-471d-8675-c12879f3b141/%EC%8B%A0%EA%B7%9C%ED%8E%AB%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4%EA%B2%8C%EC%8B%9C%EB%AC%BC900x750.png","image":"image/pet-7.png","variants":[{"zh":"黃金倉鼠","ko":"골든 햄스터","rarity":"史詩"},{"zh":"棕色倉鼠","ko":"갈색 햄스터","rarity":"菁英"},{"zh":"白色倉鼠","ko":"흰 햄스터","rarity":"稀有"},{"zh":"深灰色倉鼠","ko":"진회색 햄스터","rarity":"高級"}],"imageNote":""},{"id":"pet-8","type":"pet","typeLabel":"寵物","number":8,"zh":"黑色小貓頭鷹","ko":"까만 아기 올빼미","lines":["黑色小貓頭鷹","까만 아기 올빼미"],"kind":"限定","date":"2025-10-30","endDate":"2025-11-27","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3201520","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251029/5ab8a64d-2b9c-4467-92d5-d138c4102462/7%EC%9C%BC%EC%8A%A4%EC%8A%A4%ED%95%A0%EB%A1%9C%EC%9C%88%ED%8E%AB%ED%8C%A8%ED%82%A4%EC%A7%80%EA%B2%8C%EC%8B%9C%EB%AC%BC900x7501.png","image":"image/pet-8.png","variants":[{"zh":"黑色小貓頭鷹","ko":"까만 아기 올빼미","rarity":"菁英"}],"imageNote":""},{"id":"pet-9","type":"pet","typeLabel":"寵物","number":9,"zh":"小熊貓系列","ko":"레서판다","lines":["小熊貓系列","레서판다"],"kind":"常規","date":"2025-12-18","endDate":"2026-03-26","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3311095","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251217/6077be69-f1db-4e9f-b5fd-4b569e2012b2/6%EB%A0%88%EC%84%9C%ED%8C%90%EB%8B%A4%ED%8E%AB%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4900x750.png","image":"image/pet-9.png","variants":[{"zh":"紅色小熊貓","ko":"붉은 레서판다","rarity":"史詩"},{"zh":"奶油色小熊貓","ko":"크림색 레서판다","rarity":"菁英"},{"zh":"淺棕小熊貓","ko":"연갈색 레서판다","rarity":"稀有"},{"zh":"棕色小熊貓","ko":"갈색 레서판다","rarity":"高級"}],"imageNote":""},{"id":"pet-10","type":"pet","typeLabel":"寵物","number":10,"zh":"布丁狗愛好者西施犬","ko":"폼폼푸린 러버 시추","lines":["布丁狗愛好者西施犬","폼폼푸린 러버 시추"],"kind":"聯動","date":"2025-12-18","endDate":"2026-01-15","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3311101","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251217/eb7477b1-f416-492c-931d-5097f736f5d4/3%EB%A9%8D%EB%A9%8D%ED%8F%BC%ED%8F%BC%ED%91%B8%EB%A6%B0%ED%8E%AB%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4.png","image":"image/pet-10.png","variants":[{"zh":"布丁狗愛好者西施犬","ko":"폼폼푸린 러버 시추","rarity":"菁英"}],"imageNote":""},{"id":"pet-11","type":"pet","typeLabel":"寵物","number":11,"zh":"雪人浣熊","ko":"스노우맨 라쿤","lines":["雪人浣熊","스노우맨 라쿤"],"kind":"限定","date":"2025-12-18","endDate":"2025-12-30","year":"2025","notice":"https://mabinogimobile.nexon.com/News/Notice/3311093","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251217/1d9cb404-5aaa-41a0-b560-2120a6ec2e77/7%EA%B2%A8%EC%9A%B8%EC%B6%95%EC%A0%9C%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%A7%A8%EB%9D%BC%EC%BF%A4%ED%8C%A8%ED%82%A4%EC%A7%80900x750.png","image":"image/pet-11.png","variants":[{"zh":"雪人浣熊","ko":"스노우맨 라쿤","rarity":"菁英"}],"imageNote":""},{"id":"pet-12","type":"pet","typeLabel":"寵物","number":12,"zh":"冬日燈火小狐狸","ko":"윈터 램프 아기 여우","lines":["冬日燈火小狐狸","윈터 램프 아기 여우"],"kind":"限定","date":"2026-01-15","endDate":"2026-01-29","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3345411","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260114/9babad15-bd39-42ac-affd-ce51d65e5293/5%EC%9C%88%ED%84%B0%EB%9E%A8%ED%94%84%EC%95%84%EA%B8%B0%EC%97%AC%EC%9A%B0%ED%8C%A8%ED%82%A4%EC%A7%80%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/pet-12.png","variants":[{"zh":"冬日燈火小狐狸","ko":"윈터 램프 아기 여우","rarity":"菁英"}],"imageNote":""},{"id":"pet-13","type":"pet","typeLabel":"寵物","number":13,"zh":"新春韓服貓","ko":"설빔 고양이","lines":["新春韓服貓","설빔 고양이"],"kind":"限定","date":"2026-02-12","endDate":"2026-03-05","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3373324","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260211/d0c8107e-621e-4ee1-83ff-077913c8300a/5%EC%84%A4%EB%B9%94%EA%B3%A0%EC%96%91%EC%9D%B4%ED%8C%A8%ED%82%A4%EC%A7%80%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/pet-13.png","variants":[{"zh":"新春韓服貓","ko":"설빔 고양이","rarity":"菁英"}],"imageNote":""},{"id":"pet-14","type":"pet","typeLabel":"寵物","number":14,"zh":"楓之谷朋友寵物","ko":"단풍잎 친구들","lines":["楓之谷朋友寵物","단풍잎 친구들"],"kind":"聯動","date":"2026-03-12","endDate":"2026-03-26","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3398065","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260311/acce978e-9389-4838-be5b-e88c818a0933/2%ED%8E%AB%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4%EA%B2%8C%EC%8B%9C%EA%B8%80%EB%82%B4%EB%B6%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x7502%EC%B0%A8%EC%88%98%EC%A0%95.png","image":"image/pet-14.png","variants":[{"zh":"快樂蘑菇浣熊","ko":"해피 머시룸 라쿤","rarity":"史詩"},{"zh":"冰佩佩與小熊","ko":"아이스 페페와 아기곰","rarity":"史詩"}],"imageNote":""},{"id":"pet-15","type":"pet","typeLabel":"寵物","number":15,"zh":"挪威森林貓系列","ko":"노르웨이 숲 고양이","lines":["挪威森林貓系列","노르웨이 숲 고양이"],"kind":"常規","date":"2026-03-26","endDate":"2026-05-21","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3407263","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260325/94fa0670-f8e0-402a-ac82-ada3ad52adb3/5%EB%85%B8%EB%A5%B4%EC%9B%A8%EC%9D%B4%EC%88%B2%ED%8E%AB%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/pet-15.png","variants":[{"zh":"荷葉邊挪威森林貓","ko":"프릴 노르웨이 숲 고양이","rarity":"史詩"},{"zh":"披風挪威森林貓","ko":"케이프 노르웨이 숲 고양이","rarity":"菁英"},{"zh":"緞帶挪威森林貓","ko":"리본 노르웨이 숲 고양이","rarity":"稀有"},{"zh":"灰棕挪威森林貓","ko":"회갈색 노르웨이 숲 고양이","rarity":"高級"}],"imageNote":""},{"id":"pet-16","type":"pet","typeLabel":"寵物","number":16,"zh":"橡實倉鼠","ko":"도토리 햄스터","lines":["橡實倉鼠","도토리 햄스터"],"kind":"聯動","date":"2026-04-02","endDate":"2026-04-23","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3414447","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260401/5ee2babd-5c8c-4c67-8b04-59f2dda4377b/4%EB%8F%84%ED%86%A0%EB%A6%AC%ED%96%84%EC%8A%A4%ED%84%B0%ED%8E%AB%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/pet-16.png","variants":[{"zh":"橡實倉鼠","ko":"도토리 햄스터","rarity":"史詩"}],"imageNote":""},{"id":"pet-17","type":"pet","typeLabel":"寵物","number":17,"zh":"野餐小兔","ko":"피크닉 아기 토끼","lines":["野餐小兔","피크닉 아기 토끼"],"kind":"限定","date":"2026-04-23","endDate":"2026-05-21","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3428344","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260422/828214dc-6f24-4345-8fbd-7887a043a582/0423%ED%94%BC%ED%81%AC%EB%8B%89%EC%95%84%EA%B8%B0%ED%86%A0%EB%81%BC%ED%8C%A8%ED%82%A4%EC%A7%80.png","image":"image/pet-17.png","variants":[{"zh":"野餐小兔","ko":"피크닉 아기 토끼","rarity":"菁英"}],"imageNote":""},{"id":"pet-18","type":"pet","typeLabel":"寵物","number":18,"zh":"小豬系列","ko":"아기 돼지","lines":["小豬系列","아기 돼지"],"kind":"常規","date":"2026-05-21","endDate":"2026-07-23","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3447994","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260520/f53c10ac-c7d1-405d-b019-719a9ec92e3d/%EC%95%84%EA%B8%B0%EB%8F%BC%EC%A7%80%ED%8E%AB%EB%9F%AD%ED%82%A4%EB%B0%95%EC%8A%A4260521.png","image":"image/pet-18.png","variants":[{"zh":"皇家小豬","ko":"로얄 아기 돼지","rarity":"史詩"},{"zh":"棕色小豬","ko":"갈색 아기 돼지","rarity":"菁英"},{"zh":"杏色小豬","ko":"살구색 아기 돼지","rarity":"稀有"},{"zh":"斑點小豬","ko":"얼룩 아기 돼지","rarity":"高級"}],"imageNote":""},{"id":"pet-19","type":"pet","typeLabel":"寵物","number":19,"zh":"守宮系列","ko":"게코 도마뱀","lines":["守宮系列","게코 도마뱀"],"kind":"常規","date":"2026-07-23","endDate":"2026-09-17","year":"2026","notice":"https://mabinogimobile.nexon.com/News/Notice/3505478","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260721/39648d71-ad58-470d-b905-414310e72a6b/6%EA%B2%8C%EC%BD%94%EB%8F%84%EB%A7%88%EB%B1%80%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9D%B4%EB%AF%B8%EC%A7%80900x750.png","image":"image/pet-19.png","variants":[{"zh":"小龍守宮","ko":"리틀 드래곤 게코 도마뱀","rarity":"史詩"},{"zh":"條紋守宮","ko":"줄무늬 게코 도마뱀","rarity":"菁英"},{"zh":"緞帶守宮","ko":"리본 게코 도마뱀","rarity":"稀有"},{"zh":"斑點守宮","ko":"얼룩 게코 도마뱀","rarity":"高級"}],"imageNote":""},{"id":"abyss-1","type":"abyss","typeLabel":"深淵副本時裝","number":1,"zh":"失落月景","ko":"로스트 문스케이프","lines":["失落月景","로스트 문스케이프"],"date":"2025-04-03","year":"2025","origin":"瑪斯深淵｜마스 어비스","notice":"https://mabinogimobile.nexon.com/News/Update/2777174","sourceImage":"https://namu.moe/w/%ED%8C%8C%EC%9D%BC:%EB%A1%9C%EC%8A%A4%ED%8A%B8%EB%AC%B8%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84%ED%8C%A8%EC%85%98%EC%9E%A5%EB%B9%84.png","image":"image/abyss-1.png","parts":["로스트 문스케이프 예복 (여성용)","로스트 문스케이프 예복 (남성용)","로스트 문스케이프 부츠 (여성용)","로스트 문스케이프 부츠 (남성용)","로스트 문스케이프 글러브","로스트 문스케이프 햇"]},{"id":"abyss-2","type":"abyss","typeLabel":"深淵副本時裝","number":2,"zh":"惡魔暗影","ko":"데모닉 섀도","lines":["惡魔暗影","데모닉 섀도"],"date":"2025-10-02","year":"2025","origin":"巴里深淵｜바리 어비스","notice":"https://mabinogimobile.nexon.com/News/Update/3147463","sourceImage":"https://namu.moe/w/%ED%8C%8C%EC%9D%BC:%EB%8D%B0%EB%AA%A8%EB%8B%89%EC%84%80%EB%8F%84%ED%8C%A8%EC%85%98%EC%9E%A5%EB%B9%84.png","image":"image/abyss-2.png","parts":["데모닉 섀도 후드 (여성용)","데모닉 섀도 후드 (남성용)","데모닉 섀도 글러브","데모닉 섀도 부츠"]},{"id":"abyss-3","type":"abyss","typeLabel":"深淵副本時裝","number":3,"zh":"莫爾海盜","ko":"모르 코르세어","lines":["莫爾海盜","모르 코르세어"],"date":"2026-07-02","year":"2026","origin":"倫達深淵｜룬다 어비스","notice":"https://mabinogimobile.nexon.com/News/Update/3489835","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260701/69e321b1-e87f-4758-ade5-d63652df9656/%EB%AA%A8%EB%A5%B4%EC%BD%94%EB%A5%B4%EC%84%B8%EC%96%B4%EC%9D%98%EC%83%81%EC%84%B8%ED%8A%B8.png","image":"image/abyss-3.png"},{"id":"raid-1","type":"raid","typeLabel":"團隊副本時裝","number":1,"zh":"咆哮之魂","ko":"포효하는 영혼","lines":["咆哮之魂","포효하는 영혼"],"date":"2025-04-24","year":"2025","origin":"格拉斯吉布寧團隊副本｜글라스기브넨 레이드","notice":"https://mabinogimobile.nexon.com/News/Update/2839181","sourceImage":"https://namu.moe/w/%ED%8C%8C%EC%9D%BC:%ED%8F%AC%ED%9A%A8%ED%95%98%EB%8A%94%EC%98%81%ED%98%BC%ED%8C%A8%EC%85%98%EC%9E%A5%EB%B9%84.png","image":"image/raid-1.png","parts":["포효하는 영혼의 바이저","포효하는 영혼의 밴디지","포효하는 영혼의 아머 (남성용)","포효하는 영혼의 아머 (여성용)","포효하는 영혼의 글러브","포효하는 영혼의 부츠"]},{"id":"raid-2","type":"raid","typeLabel":"團隊副本時裝","number":2,"zh":"蝕影","ko":"이클립스 셰이드","lines":["蝕影","이클립스 셰이드"],"date":"2025-06-23","year":"2025","origin":"白色魅魔團隊副本｜화이트 서큐버스 레이드","notice":"https://mabinogimobile.nexon.com/News/Update/2958152","sourceImage":"https://upload3.inven.co.kr/upload/2025/06/19/bbs/i1129608623.jpg?MW=800","image":"image/raid-2.jpg"},{"id":"raid-3","type":"raid","typeLabel":"團隊副本時裝","number":3,"zh":"奧秘金屬","ko":"아케인 메탈릭","lines":["奧秘金屬","아케인 메탈릭"],"date":"2025-11-13","year":"2025","origin":"塔巴爾塔斯團隊副本｜타바르타스 레이드","notice":"https://mabinogimobile.nexon.com/News/Update/3219468","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20251112/28a81bc2-d5bb-47c8-9d46-9fcc419d58f7/250918%ED%83%80%EB%B0%94%EB%A5%B4%ED%83%80%EC%8A%A4%EC%8A%A4%EC%83%B7%EC%A0%95%EB%A6%AC.png","image":"image/raid-3.png","parts":["아케인 메탈릭 서클릿","아케인 메탈릭 웨어 (여성용)","아케인 메탈릭 웨어 (남성용)","아케인 메탈릭 글러브","아케인 메탈릭 부츠 (여성용)","아케인 메탈릭 부츠 (남성용)"]},{"id":"raid-4","type":"raid","typeLabel":"團隊副本時裝","number":4,"zh":"奇異小丑","ko":"오드 클라운","lines":["奇異小丑","오드 클라운"],"date":"2026-01-15","year":"2026","origin":"艾瑞爾團隊副本｜에이렐 레이드","notice":"https://mabinogimobile.nexon.com/News/update/3345587","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260114/25993dd3-5be0-4f7f-83ae-e277c37ed529/%EC%98%A4%EB%93%9C%ED%81%B4%EB%9D%BC%EC%9A%B4%ED%8C%A8%EC%85%98%EC%9E%A5%EB%B9%84.png","image":"image/raid-4.png","parts":["오드 클라운 드레스(여성용)","오드 클라운 수트(남성용)","오드 클라운 글러브","오드 클라운 부츠(여성용)","오드 클라운 부츠(남성용)","오드 클라운 햇"]},{"id":"raid-5","type":"raid","typeLabel":"團隊副本時裝","number":5,"zh":"卡拉格龍騎兵","ko":"카라그 드라군","lines":["卡拉格龍騎兵","카라그 드라군"],"date":"2026-07-16","year":"2026","origin":"卡布拉克團隊副本｜카브락 레이드","notice":"https://mabinogimobile.nexon.com/News/Update/3500247","sourceImage":"https://dszw1qtcnsa5e.cloudfront.net/community/20260715/1b784aab-f7ae-4caa-8db4-cdd0f752be76/%EC%B9%B4%EB%9D%BC%EA%B7%B8%EB%93%9C%EB%9D%BC%EA%B5%B0%ED%8C%A8%EC%85%98%EC%9E%A5%EB%B9%84.png","image":"image/raid-5.png"}];
+const LABELS={pass:'通行證',lucky:'幸運箱',package:'全套套組',pet:'寵物',abyss:'深淵副本時裝',raid:'團隊副本時裝'};
+
+const state={type:'pass',sort:'old'};
+// 台服目前兩波時裝幸運箱（以這份韓服圖鑑編號對照）：
+// 第一波：#1 盛放春光、#8 漣漪的記憶，另有「星之誓約」（不在這份韓服編號清單中）。
+// 第二波：#2 熱情之舞、#4 春季運動會、#5 閃耀應援。
+const TW_LUCKY_WAVES=[
+  {wave:1,numbers:[1,8],extra:['星之誓約']},
+  {wave:2,numbers:[2,4,5]}
+];
+const PREDICTION_BASE_DATE='2026.09.09';
+const PREDICTION_RANKS=[
+  {number:3,kind:'main',level:'高機率',reason:'韓服第 3 期，是目前最早尚未在台服登場的早期缺口。第 2、4、5 期都已於台服第二波出現，因此它不應被排除。'},
+  {number:6,kind:'main',level:'高機率',reason:'韓服第 6 期，緊接已在台服登場的第 5 期；若台服開始回補早期韓服順序，這套會非常靠前。'},
+  {number:7,kind:'main',level:'高機率',reason:'韓服第 7 期與第 6 期同日推出，具有同批成組的關係；台服一次上 3 箱，因此和第 6 期一起出現的可能性較高。'},
+  {number:9,kind:'candidate',level:'候補',reason:'韓服第 9 期，若台服再次採取跳號或拆開同批內容，它是下一個很自然的替補選項。'}
+];
+
+const feed=document.getElementById('feed');
+const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const fmt=s=>s?`${s.slice(0,4)}.${s.slice(5,7)}.${s.slice(8,10)}`:'';
+
+const TW_PASS_CONFIRMED={
+  1:{start:'2026-07-22',end:'2026-08-19',notice:'https://tw.nexon.com/mabinogimobile/home/news/notice/3504636'},
+  2:{start:'2026-08-19',end:'2026-09-09',notice:'https://tw.nexon.com/mabinogimobile/home/news/notice/3527236'}
+};
+const TW_PASS_PREDICT_BASE='2026-08-19';
+const TW_PASS_PREDICT_DAYS=21;
+function addDays(dateString,days){
+  const d=new Date(dateString+'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate()+days);
+  return d.toISOString().slice(0,10);
+}
+function getTwPassSchedule(number){
+  const n=Number(number);
+  if(TW_PASS_CONFIRMED[n])return {...TW_PASS_CONFIRMED[n],confirmed:true};
+  if(n<3)return null;
+  const start=addDays(TW_PASS_PREDICT_BASE,(n-2)*TW_PASS_PREDICT_DAYS);
+  return {start,end:addDays(start,TW_PASS_PREDICT_DAYS),confirmed:false};
+}
+function twScheduleState(schedule){
+  if(!schedule?.confirmed)return '21 日推估';
+  const now=new Date();
+  const start=new Date(schedule.start+'T00:00:00');
+  const end=new Date(schedule.end+'T06:00:00');
+  if(now>=start&&now<end)return '進行中';
+  if(now>=end)return '已結束';
+  return '已確認';
+}
+function renderTwPassSchedule(item){
+  return '';
+}
+
+
+function rarityClass(r){
+  const map={'史詩':'epic','菁英':'elite','稀有':'rare','高級':'high'};
+  return map[r]||'';
+}
+function renderPetVariants(item){
+  if(item.type!=='pet'||!item.variants?.length)return '';
+  return `<div class="pet-variants">${item.variants.map(v=>`<span class="pet-variant">${v.rarity?`<span class="pet-rarity ${rarityClass(v.rarity)}">${esc(v.rarity)}</span>`:''}<span>${esc(v.zh)}</span><span>·</span><span>${esc(v.ko)}</span></span>`).join('')}</div>${item.imageNote?`<div class="pet-image-note">${esc(item.imageNote)}</div>`:''}`;
+}
+
+const PET_DB='mabi-mobile-pet-image-cache-v2';
+const PET_STORE='images';
+function openPetDb(){return new Promise((resolve,reject)=>{const r=indexedDB.open(PET_DB,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(PET_STORE))r.result.createObjectStore(PET_STORE)};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+async function petDbGet(key){try{const db=await openPetDb();return await new Promise((res,rej)=>{const r=db.transaction(PET_STORE,'readonly').objectStore(PET_STORE).get(key);r.onsuccess=()=>res(r.result||null);r.onerror=()=>rej(r.error)})}catch{return null}}
+async function petDbPut(key,blob){try{const db=await openPetDb();await new Promise((res,rej)=>{const r=db.transaction(PET_STORE,'readwrite').objectStore(PET_STORE).put(blob,key);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}catch{}}
+function petProxyUrl(url){return `https://images.hsingh.app/?url=${encodeURIComponent(url)}&w=900&output=webp`}
+async function fetchPetBlob(item){
+  let err;
+  for(const url of [item.image,petProxyUrl(item.image)]){
+    try{const r=await fetch(url,{mode:'cors',cache:'force-cache'});if(r.ok){const b=await r.blob();if(b.size>1000)return b}}catch(e){err=e}
+  }
+  throw err||new Error('image fetch failed');
+}
+function petCacheKey(item){
+  const src=item.sourceImage||item.image||'';
+  return `${item.id}|${src}`;
+}
+async function hydratePetImages(){
+  const items=DATA.filter(x=>x.type==='pet');
+  for(const item of items){
+    const img=document.querySelector(`[data-pet-id="${item.id}"] img`);if(!img)continue;
+    // 已直接嵌入 HTML 的圖片（例如賞月兔）不使用瀏覽器舊快取覆蓋。
+    if((item.image||'').startsWith('data:')){img.src=item.image;continue;}
+    const key=petCacheKey(item);
+    const cached=await petDbGet(key);
+    if(cached){img.src=URL.createObjectURL(cached);img.dataset.offline='1';continue;}
+    if(navigator.onLine){fetchPetBlob(item).then(async blob=>{await petDbPut(key,blob);const el=document.querySelector(`[data-pet-id="${item.id}"] img`);if(el){el.src=URL.createObjectURL(blob);el.dataset.offline='1'}}).catch(()=>{})}
+  }
+}
+function blobToDataURL(blob){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(r.error);r.readAsDataURL(blob)})}
+let toastTimer;
+function showOfflineToast(text){const el=document.getElementById('offlineToast');el.textContent=text;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3200)}
+async function buildPetOfflineFile(){
+  const btn=document.getElementById('offlinePetBtn');const pets=DATA.filter(x=>x.type==='pet');btn.disabled=true;
+  const map=new Map();let ok=0,fail=0;
+  for(let i=0;i<pets.length;i++){
+    const item=pets[i];btn.textContent=`處理圖片 ${i+1}/${pets.length}`;
+    try{let blob=(item.image||'').startsWith('data:')?await (await fetch(item.image)).blob():await petDbGet(petCacheKey(item));if(!blob){blob=await fetchPetBlob(item);await petDbPut(petCacheKey(item),blob)};map.set(item.image,await blobToDataURL(blob));ok++}catch{fail++}
+  }
+  if(!ok){btn.disabled=false;btn.textContent='⬇ 建立寵物離線版';showOfflineToast('圖片下載失敗，請確認目前有網路後再試。');return;}
+  const clone=document.documentElement.cloneNode(true);const cloneFeed=clone.querySelector('#feed');if(cloneFeed)cloneFeed.innerHTML='';clone.querySelectorAll('.viewer,.prediction-modal,.source-modal').forEach(x=>x.classList.remove('open'));
+  let text='<!doctype html>\n'+clone.outerHTML;
+  for(const [url,data] of map){text=text.replace(`\\"image\\":\\"${url}\\"`,`\\"image\\":\\"${data}\\"`);text=text.replace(`"image":"${url}"`,`"image":"${data}"`)}
+  const out=new Blob([text],{type:'text/html;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(out);a.download='瑪奇Mobile韓服外觀圖鑑_歷屆寵物_完整離線版.html';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);
+  btn.disabled=false;btn.textContent='⬇ 建立寵物離線版';showOfflineToast(fail?`已嵌入 ${ok} 張，另有 ${fail} 張抓取失敗。`:`完成：${ok} 張寵物圖片已嵌入新的 HTML，可完全離線使用。`);
+}
+
+function render(){
+  document.getElementById('sectionTitle').textContent=LABELS[state.type];
+  document.getElementById('sectionNote').textContent='';
+  document.getElementById('openPrediction').classList.toggle('show',state.type==='lucky');
+  document.getElementById('offlinePetBtn').classList.remove('show');
+  let rows=DATA.filter(x=>x.type===state.type);
+  rows.sort((a,b)=>{const d=a.date.localeCompare(b.date)||Number(a.number)-Number(b.number);return state.sort==='old'?d:-d;});
+  if(!rows.length){feed.innerHTML=`<div class="empty"><b>${esc(LABELS[state.type])}</b>這個分類目前還沒有加入資料。</div>`;return;}
+  feed.innerHTML=rows.map(item=>{
+    const issue=item.type==='package'?`第 ${item.number} 代`:item.type==='pet'?item.kind:(item.type==='abyss'||item.type==='raid')?`第 ${item.number} 套`:`第 ${item.number} 期`;
+    const issueClass=item.type==='pet'?(item.kind==='限定'?'limited':item.kind==='聯動'?'collab':'regular'):'';
+    const date=item.type==='package'?`韓服 ${fmt(item.date)} → ${fmt(item.endDate)}`:item.type==='pet'?`韓服 ${fmt(item.date)} → ${fmt(item.endDate)}`:(item.type==='pass'||item.type==='abyss'||item.type==='raid'?'韓服 ':'')+fmt(item.date);
+    return `<article class="entry">
+      <div class="image-wrap" data-image="${item.id}" ${item.type==='pet'?`data-pet-id="${item.id}"`:''} title="點擊放大">
+        <img loading="lazy" src="${item.image}" ${item.sourceImage?`data-fallback="${esc(item.sourceImage)}"`:``} alt="${esc(item.zh)}">
+      </div>
+      <div class="entry-info">
+        <div class="entry-meta"><span class="issue ${issueClass}">${esc(issue)}</span><span class="date">${date}</span></div>
+        <div class="name">${esc(item.zh)}</div>
+        ${item.ko?`<div class="ko">${esc(item.ko)}</div>`:''}
+        ${renderPetVariants(item)}
+      </div>
+    </article>`;
+  }).join('');
+  feed.querySelectorAll('img[data-fallback]').forEach(img=>{img.addEventListener('error',()=>{if(img.dataset.fallback&&img.src!==img.dataset.fallback){img.src=img.dataset.fallback;}},{once:true});});
+  if(state.type==='pet')hydratePetImages();
+}
+document.querySelectorAll('.category').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.category').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  state.type=btn.dataset.type;
+  render();
+  document.querySelector('main').scrollIntoView({behavior:'smooth',block:'start'});
+}));
+document.getElementById('sort').addEventListener('change',e=>{state.sort=e.target.value;render()});
+const offlinePetBtn=document.getElementById('offlinePetBtn'); if(offlinePetBtn){offlinePetBtn.addEventListener('click',buildPetOfflineFile);}
+
+function openViewer(item){
+  if(!item)return;
+  document.getElementById('viewerImg').src=item.image; document.getElementById('viewerImg').onerror=()=>{if(item.sourceImage)document.getElementById('viewerImg').src=item.sourceImage;};
+  document.getElementById('viewerImg').alt=item.zh;
+  document.getElementById('viewer').classList.add('open');
+  document.getElementById('viewer').setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+feed.addEventListener('click',e=>{
+  const hit=e.target.closest('[data-image]'); if(!hit)return;
+  openViewer(DATA.find(x=>x.id===hit.dataset.image));
+});
+
+function getLuckyPrediction(){
+  return PREDICTION_RANKS.map(cfg=>{
+    const item=DATA.find(x=>x.type==='lucky'&&Number(x.number)===cfg.number);
+    return item?{...item,...cfg}:null;
+  }).filter(Boolean);
+}
+function buildPrediction(){
+  const rows=getLuckyPrediction();
+  let mainIndex=0;
+  document.getElementById('predictionList').innerHTML=rows.map(item=>{
+    const isCandidate=item.kind==='candidate';
+    if(!isCandidate)mainIndex+=1;
+    const orderLabel=isCandidate?'候補':'主預測 '+mainIndex;
+    return `<article class="prediction-item ${isCandidate?'candidate':''}">
+      <div class="prediction-image" data-predict-image="${item.id}" title="點擊放大"><img src="${item.image}" alt="${esc(item.zh)}"></div>
+      <div class="prediction-info">
+        <div class="prediction-order">${orderLabel}</div>
+        <div class="prediction-level">${esc(item.level)}</div>
+        <div class="prediction-meta">韓服第 ${item.number} 期 · ${fmt(item.date)}</div>
+        <div class="prediction-name">${esc(item.zh)}</div>
+        ${item.ko?`<div class="prediction-ko">${esc(item.ko)}</div>`:''}
+        <div class="prediction-reason"><b>為什麼：</b>${esc(item.reason)}</div>
+      </div>
+    </article>`;
+  }).join('');
+  document.getElementById('predictionFoot').innerHTML=`<b>推算基準：</b>台服第一波在本圖鑑可對應 #1、#8，另有「星之誓約」；第二波為 #2、#4、#5。先排除這些已出項目，再參考韓服原始順序與同日成組關係。因台服曾跳號，所以列出 3 套主預測＋1 套候補。基準檔期：${PREDICTION_BASE_DATE}。<br><b>注意：</b>這是整理用推測，不是官方預告。`;
+}
+function openPrediction(){
+  buildPrediction();
+  document.getElementById('predictionModal').classList.add('open');
+  document.getElementById('predictionModal').setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closePrediction(){
+  document.getElementById('predictionModal').classList.remove('open');
+  document.getElementById('predictionModal').setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.getElementById('openPrediction').addEventListener('click',openPrediction);
+document.getElementById('predictionClose').addEventListener('click',closePrediction);
+document.getElementById('predictionModal').addEventListener('click',e=>{
+  const hit=e.target.closest('[data-predict-image]');
+  if(hit){const item=DATA.find(x=>x.id===hit.dataset.predictImage);closePrediction();openViewer(item);return;}
+  if(e.target.id==='predictionModal')closePrediction();
+});
+function closeViewer(){
+  document.getElementById('viewer').classList.remove('open');
+  document.getElementById('viewer').setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.getElementById('viewerClose').addEventListener('click',closeViewer);
+document.getElementById('viewer').addEventListener('click',e=>{if(e.target.id==='viewer')closeViewer()});
+
+function buildSources(){
+  const groups=['pass','lucky','package','pet','abyss','raid'];
+  document.getElementById('sourceList').innerHTML=groups.map(type=>{
+    const rows=DATA.filter(x=>x.type===type).sort((a,b)=>a.date.localeCompare(b.date)||Number(a.number)-Number(b.number));
+    if(!rows.length)return '';
+    return `<section class="source-group"><h3>${LABELS[type]}</h3>${rows.map(x=>`<div class="source-row">
+      <div class="source-label"><b>${x.type==='package'?`第 ${x.number} 代`:x.type==='pet'?x.kind:(x.type==='abyss'||x.type==='raid')?`第 ${x.number} 套`:`第 ${x.number} 期`}｜${esc(x.zh)}</b><br>${x.type==='package'||x.type==='pet'?`${fmt(x.date)} → ${fmt(x.endDate)}`:fmt(x.date)}${x.origin?`<br>${esc(x.origin)}`:''}</div>
+      <div class="source-links">${x.notice?`<a href="${x.notice}" target="_blank" rel="noopener">韓服公告 ↗</a>`:''}${x.sourceImage?`<a href="${x.sourceImage}" target="_blank" rel="noopener">圖片 ↗</a>`:''}${x.type==='pass'&&getTwPassSchedule(x.number)?.notice?`<a href="${getTwPassSchedule(x.number).notice}" target="_blank" rel="noopener">台服公告 ↗</a>`:''}</div>
+    </div>`).join('')}</section>`;
+  }).join('')+`<section class="source-group"><h3>台版幸運箱預測基準</h3><div class="source-row"><div class="source-label"><b>台服兩波時裝幸運箱對照</b><br>第一波：盛放春光／星之誓約／漣漪的記憶；第二波：熱情之舞／春季運動會／閃耀的應援。預測僅作排序與候補判斷。</div><div class="source-links"><a href="https://forum.gamer.com.tw/C.php?bsn=32564&snA=2263" target="_blank" rel="noopener">第二波 ↗</a><a href="https://mabinogimobile.nipponhashi.com/guides/kr-cash-catalogue/" target="_blank" rel="noopener">台韓對照 ↗</a></div></div></section>`;
+}
+function openSources(){buildSources();document.getElementById('sourceModal').classList.add('open');document.getElementById('sourceModal').setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function closeSources(){document.getElementById('sourceModal').classList.remove('open');document.getElementById('sourceModal').setAttribute('aria-hidden','true');document.body.style.overflow=''}
+document.getElementById('openSources').addEventListener('click',openSources);
+document.getElementById('sourceClose').addEventListener('click',closeSources);
+document.getElementById('sourceModal').addEventListener('click',e=>{if(e.target.id==='sourceModal')closeSources()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeViewer();closeSources();closePrediction()}});
+render();
+</script>
+<div class="offline-toast" id="offlineToast"></div>
+</body>
+</html>
