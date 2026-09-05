@@ -1,23 +1,14 @@
-這包是修正「首頁圖片、分類按鈕順序、頁面標題 / 搜尋列排版」用的更新補丁。
+直接覆蓋包，不需要 Actions。
 
-一定要上傳這三個資料夾：
-- .github/
-- scripts/
-- image/
-
-使用方式：
-1. 解壓縮 ZIP。
-2. 把 .github、scripts、image 三個資料夾拖進 GitHub repo 根目錄上傳。
+上傳方式：
+1. 把 index.html 上傳到 GitHub repo 根目錄，覆蓋原本的 index.html。
+2. 把 image/hero-campfire.png 和 image/hero-friends.png 上傳到 image 資料夾。
 3. Commit changes。
-4. 到 Actions，執行「套用首頁圖片與最終排版」。
-5. 等 workflow 綠勾，再等 pages-build-deployment 綠勾。
-6. 回網站 Ctrl + F5。
+4. 等 pages-build-deployment 綠勾後，網站 Ctrl + F5。
 
-這次修正內容：
-- 首頁左側營火合照放大一點。
-- 主標維持兩行：瑪奇Mobile / 韓服外觀圖鑑。
-- 各分類頁的「頁面名稱」會和搜尋列排成同一列（桌面版），搜尋列也加大。
-- 染色預覽移到分類列最後面，並加上「額外工具」標示，強調它是額外做的功能性工具。
-- 分類按鈕維持無 icon。
-- 寵物頁保留 全部 / 常駐 / 限定 / 聯動 篩選與顏色。
-- 卡片右下角保留期數框，卡片下半部空白維持較緊湊。
+修正內容：
+- 寵物篩選只保留一組，並改成較大的彩色按鈕。
+- 分類按鈕恢復可點擊。
+- 染色預覽移到最後並標示額外工具。
+- 桌機卡片三欄。
+- 標題和卡片文字縮小。
