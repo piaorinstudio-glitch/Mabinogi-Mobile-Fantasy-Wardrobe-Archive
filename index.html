@@ -925,6 +925,79 @@ footer{padding:4px 0 40px;color:var(--muted);font-size:11px;text-align:center}
   .dye-chip-grid{grid-template-columns:1fr;}
 }
 
+
+/* search lazy hash optimization patch */
+.archive-tools{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  margin-left:auto;
+  flex-wrap:wrap;
+}
+.archive-search-wrap{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  height:40px;
+  padding:0 12px;
+  border:1px solid rgba(199,184,150,.62);
+  border-radius:14px;
+  background:linear-gradient(180deg,#fffdf8,#f4ede0);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.65);
+  color:#5b654f;
+  font-size:12px;
+  font-weight:950;
+  white-space:nowrap;
+}
+.archive-search{
+  width:min(290px,42vw);
+  min-width:190px;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--ink);
+  font-size:13px;
+  font-weight:800;
+}
+.archive-search::placeholder{color:#9b967f;font-weight:700}
+.archive-count{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.empty-state{
+  padding:34px 22px;
+  border:1px dashed var(--line-2);
+  border-radius:18px;
+  background:rgba(255,253,248,.62);
+  color:var(--muted);
+  text-align:center;
+  font-weight:900;
+  line-height:1.8;
+}
+.category:focus-visible,.sort:focus-visible,.archive-search:focus-visible,.predict-btn:focus-visible,.source-btn:focus-visible{
+  outline:3px solid rgba(184,144,69,.28);
+  outline-offset:2px;
+}
+@media(max-width:680px){
+  .archive-tools{
+    width:100%;
+    justify-content:space-between;
+    margin:8px 0 0;
+  }
+  .archive-search-wrap{
+    flex:1 1 100%;
+    width:100%;
+  }
+  .archive-search{
+    width:100%;
+    min-width:0;
+  }
+  .archive-count{font-size:11px}
+}
+
 </style>
 </head>
 <body>
@@ -965,6 +1038,13 @@ footer{padding:4px 0 40px;color:var(--muted);font-size:11px;text-align:center}
       </select>
     </div>
   </div>
+  <div class="archive-tools" id="archiveTools">
+      <label class="archive-search-wrap" for="archiveSearch">
+        <span>搜尋</span>
+        <input id="archiveSearch" class="archive-search" type="search" placeholder="中文名 / 韓文名 / 來源 / 期數" autocomplete="off">
+      </label>
+      <div class="archive-count" id="archiveCount" aria-live="polite"></div>
+    </div>
   <section class="feed" id="feed"></section>
 </main>
 <footer class="wrap site-footer">
@@ -1282,7 +1362,51 @@ function renderDyeTool(){
   feed.querySelectorAll('.dye-scene').forEach(btn=>btn.addEventListener('click',()=>setDyeScene(btn.dataset.scene)));
 }
 
+
+function normalizeSearchText(value){
+  return String(value ?? '').toLowerCase().replace(/\s+/g,' ').trim();
+}
+function itemSearchText(item){
+  return normalizeSearchText([
+    item.id,item.type,LABELS[item.type],item.zh,item.ko,item.origin,item.kind,item.date,item.number,
+    Array.isArray(item.variants)?item.variants.map(v=>[v.name,v.rarity,v.note].join(' ')).join(' '):''
+  ].join(' '));
+}
+function currentHash(){
+  const params=new URLSearchParams(location.hash.replace(/^#/,''));
+  return params;
+}
+function applyHashToState(){
+  const params=currentHash();
+  const type=params.get('type') || location.hash.replace(/^#/, '').split('&')[0];
+  if(type && LABELS[type]) state.type=type;
+  const sort=params.get('sort');
+  if(sort==='old'||sort==='new') state.sort=sort;
+  const q=params.get('q');
+  if(q!==null) state.query=q;
+  const sortEl=document.getElementById('sort');
+  if(sortEl) sortEl.value=state.sort;
+  const searchEl=document.getElementById('archiveSearch');
+  if(searchEl) searchEl.value=state.query;
+}
+function updateHash(replace=false){
+  const params=new URLSearchParams();
+  params.set('type',state.type);
+  if(state.sort!=='old') params.set('sort',state.sort);
+  if(state.query) params.set('q',state.query);
+  const next='#'+params.toString();
+  if(location.hash!==next){
+    if(replace) history.replaceState(null,'',next); else history.pushState(null,'',next);
+  }
+}
+function updateActiveCategory(){
+  document.querySelectorAll('.category').forEach(btn=>{
+    btn.classList.toggle('active',btn.dataset.type===state.type);
+  });
+}
+
 function render(){
+  updateActiveCategory();
   document.getElementById('sectionTitle').textContent=LABELS[state.type];
   document.getElementById('sectionNote').textContent='';
   document.getElementById('openPrediction').classList.toggle('show',state.type==='lucky');
@@ -1290,8 +1414,12 @@ function render(){
   if(state.type==='dye'){renderDyeTool();return;}
   renderPetFilterBar();
   let rows=DATA.filter(x=>x.type===state.type);
+  const query=normalizeSearchText(state.query||'');
+  if(query) rows=rows.filter(item=>itemSearchText(item).includes(query));
   if(state.type==='pet'&&state.petFilter&&state.petFilter!=='all') rows=rows.filter(x=>petAvailability(x)===state.petFilter);
   rows.sort((a,b)=>{const d=a.date.localeCompare(b.date)||Number(a.number)-Number(b.number);return state.sort==='old'?d:-d;});
+  const countEl=document.getElementById('archiveCount');
+  if(countEl) countEl.textContent=query?`找到 ${rows.length} 筆`:`共 ${rows.length} 筆`;
   if(!rows.length){feed.innerHTML=`<div class="empty"><b>${esc(LABELS[state.type])}</b>這個分類目前還沒有加入資料。</div>`;return;}
   feed.innerHTML=rows.map(item=>{
     const issue=item.type==='package'?`第 ${item.number} 代`:item.type==='pet'?petKindLabel(item.kind):(item.type==='abyss'||item.type==='raid')?`第 ${item.number} 套`:`第 ${item.number} 期`;
@@ -1309,6 +1437,7 @@ function render(){
       </div>
     </article>`;
   }).join('');
+  if(!rows.length){feed.innerHTML=`<div class=\"empty-state\">沒有找到符合「${state.query||''}」的資料</div>`;}
   feed.querySelectorAll('img[data-fallback]').forEach(img=>{img.addEventListener('error',()=>{if(img.dataset.fallback&&img.src!==img.dataset.fallback){img.src=img.dataset.fallback;}},{once:true});});
   if(state.type==='pet')hydratePetImages();
 }
@@ -1316,7 +1445,10 @@ document.querySelectorAll('.category').forEach(btn=>btn.addEventListener('click'
   document.querySelectorAll('.category').forEach(x=>x.classList.remove('active'));
   btn.classList.add('active');
   state.type=btn.dataset.type;
-  render();
+    state.query='';
+    const searchEl=document.getElementById('archiveSearch'); if(searchEl) searchEl.value='';
+    updateHash();
+    render();
   document.querySelector('main').scrollIntoView({behavior:'smooth',block:'start'});
 }));
 document.getElementById('sort').addEventListener('change',e=>{state.sort=e.target.value;render()});
@@ -1405,6 +1537,21 @@ document.getElementById('openSources').addEventListener('click',openSources);
 document.getElementById('sourceClose').addEventListener('click',closeSources);
 document.getElementById('sourceModal').addEventListener('click',e=>{if(e.target.id==='sourceModal')closeSources()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeViewer();closeSources();closePrediction()}});
+
+const archiveSearch=document.getElementById('archiveSearch');
+if(archiveSearch){
+  let searchTimer=null;
+  archiveSearch.addEventListener('input',e=>{
+    state.query=e.target.value.trim();
+    clearTimeout(searchTimer);
+    searchTimer=setTimeout(()=>updateHash(),180);
+    render();
+  });
+}
+window.addEventListener('hashchange',()=>{applyHashToState();render();});
+applyHashToState();
+updateHash(true);
+
 render();
 </script>
 <div class="offline-toast" id="offlineToast"></div>
@@ -1415,4 +1562,6 @@ render();
 <!-- toolbar decoupled 2026-09-05 -->
 <!-- credit footer 2026-09-05 -->
 <!-- dye preview tool 2026-09-05 -->
+
+<!-- search lazy hash patch 2026-09-05 -->
 </html>
