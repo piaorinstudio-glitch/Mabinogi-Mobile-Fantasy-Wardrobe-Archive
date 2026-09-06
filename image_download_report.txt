@@ -1,5 +1,0 @@
-Mabinogi Mobile Wardrobe image localization report
-success=0 skipped=25 failed=1
-
-Failed:
-  咆哮之魂 / 포효하는 영혼 -> image/raid-1.png :: <HTTPError 503: 'Service Unavailable'>
